@@ -1,10 +1,14 @@
 <a id="readme-top"></a>
 
-<div>
+<header>
   <a href="https://github.com/neoncrypto/linkedin">
     <img src="https://i.ibb.co/C37PPNHb/Linked-In-Blue-128-2x.png" alt="LinkedIn Logo" width="50%" align="center">
   </a>
   <h1>Self-Published Software Development Guides</h1>
+  <br />
+</header>
+
+<div>
   <p>
     <a style="margin-right: 20px;" href="https://github.com/neoncrypto/linkedin/blob/main/LICENSE">
       <img src="https://img.shields.io/github/license/neoncrypto/linkedin" alt="github license">
@@ -23,19 +27,22 @@
     </a>
     <br />
     <br />
-    <a style="margin-right: 10px;" href="https://github.com/neoncrypto/linkedin">
-      Explore Repo
+    <a href="https://github.com/neoncrypto/linkedin">
+      Explore Repo 
     </a>
-    <a style="margin-right: 10px;" href="https://github.com/neoncrypto/linkedin/issues/new">
-      Report Bug
+    |
+    <a href="https://github.com/neoncrypto/linkedin/issues/new">
+      Report Bug 
     </a>
+    |
     <a href="https://github.com/neoncrypto/linkedin/issues/new?labels=enhancement&template=feature-request">
       Request Feature
     </a>
   </p>
 </div>
 
-<hr style="height:1px;background-color:cyan;">
+<br />
+<hr>
 
 <details>  
   <summary>Table of Contents</summary>
@@ -57,7 +64,7 @@
   </ol>
 </details>
 
-<hr style="height:1px;background-color:cyan;">
+<hr>
 
 <br />
 
@@ -78,7 +85,7 @@
 [![Markdown][Markdown]][Markdown-url]
 [![Python][Python]][Python-url]
 
-<hr style="height:1px;background-color:cyan;">
+<hr>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -97,7 +104,7 @@ Check out the GitHub docs if you would like to contribute:
   <img src="https://contrib.rocks/image?repo=neoncrypto/linkedin" />
 </a>
 
-<hr style="height:1px;background-color:cyan;">
+<hr>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -110,7 +117,7 @@ Distributed under the MIT License. See
 </a> 
 for more information.
 
-<hr style="height:1px;background-color:cyan;">
+<hr>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
