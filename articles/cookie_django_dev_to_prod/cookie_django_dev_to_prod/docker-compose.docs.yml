@@ -1,0 +1,16 @@
+services:
+  docs:
+    image: cookie_django_dev_to_prod_local_docs
+    container_name: cookie_django_dev_to_prod_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./cookie_django_dev_to_prod:/app/cookie_django_dev_to_prod:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
