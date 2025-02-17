@@ -61,14 +61,14 @@
       </ul>
     </li>
     <li><a href="#license">License</a></li>
+    <li><a href="#list-of-articles">List of Articles</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
 <hr>
 
-<br />
-
+<br>
 
 ## About This Project
 
@@ -80,6 +80,7 @@
 
 <small>\*Not affiliated with LinkedIn.</small>
 
+<br>
 
 #### Built With
 
@@ -98,6 +99,8 @@ Check out the GitHub docs if you would like to contribute:
 <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo?tool=cli#about-forks" title="GitHub Fork Repository" style="display: inline;">
   GitHub: Fork a repository
 </a>
+
+<br>
 
 #### Top contributors:
 
@@ -122,15 +125,29 @@ for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<br>
+
+## List of Articles
+
+- [From Development To Production: Initializing a Scalable Cookiecutter-Django Project (Part 1 - Key Features & Benefits)](https://www.linkedin.com/pulse/from-development-production-initializing-scalable-project-elliott-ixt7f)
+- [Python Programming - Basic Error And Exception Handling](https://www.linkedin.com/pulse/python-programming-basic-error-exception-handling-brian-elliott-n1htf)
+- [Python Programming - Understanding Basic Data Structures](https://www.linkedin.com/pulse/python-understanding-basic-data-structures-brian-elliott-xcutf)
+- [Back To The Basics - Python Best Practices](https://www.linkedin.com/pulse/best-practices-programming-python-brian-elliott-j6zdf)
+
+<hr>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## Contact
 
 <a href="https://www.linkedin.com/in/neoncrypto0/" title="linkedin link">LinkedIn</a>
 
-<hr style="height:1px;background-color:cyan;">
+<hr>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<br><br>
 
 [Markdown]: https://img.shields.io/badge/markdown-%23000000.svg?logo=markdown&logoColor=red
 [Markdown-url]: https://www.markdownguide.org
