@@ -30,7 +30,7 @@ Before proceeding, make sure you have the following installed on your system:
 
 
 ## Step 1: Create a Virtual Environment and Install Cookiecutter
-To ensure a clean development environment, start by creating and activating a Python virtual environment:
+To ensure a clean development environment, start by creating and activating a Python virtual environment and installing `cookiecutter`:
 
 ```bash
 #!/usr/bin/env bash
@@ -58,7 +58,7 @@ cookiecutter gh:cookiecutter/cookiecutter-django
 
 ```
 
-You'll be prompted with a series of questions to configure your project. For this guide, you can use the following sample values, just hit enter to accept defatults if there's no value:
+You'll be prompted with a series of questions to configure your project. For this guide, you can use the following sample values, just hit enter to accept defaults if there's no value:
 
 ```txt
 
@@ -432,6 +432,7 @@ Cookiecutter Django integrates **django-allauth**, providing a robust authentica
 ### 5. Admin Panel Security
 Django’s default admin panel is a common target for brute force attacks. Cookiecutter Django adds an extra layer of security by requiring a randomly generated **admin URL**, set in an environment variable (`DJANGO_ADMIN_URL`).
 
+To generate a new one for production (IMPORTANT) run:
 
 ```bash
 #!/usr/bin/env bash
