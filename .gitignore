@@ -162,3 +162,9 @@ backup/
 
 # all .bak
 *.bak
+
+# todo
+*.todo
+
+# draft articles etc.
+*.draft.*
