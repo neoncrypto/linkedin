@@ -134,7 +134,7 @@ You'll be prompted to enter an **email and password** (the password input will b
 
 <br>
 
-## 🔧 Step 3: Initialize Pre-Commit
+## 🔧 Step 4: Initialize Pre-Commit
 
 Before making a `git commit`, initialize `pre-commit` to install hooks:
 
@@ -170,7 +170,7 @@ This ensures code quality by running checks before commits. ✅
 
 <br>
 
-## Run the Project
+## Step 5: Run the Project
 
 Run the project using the alias from earlier:
 
@@ -207,7 +207,7 @@ Your Django app should now be running! 🎉
 
 <br>
 
-## 🌍 Step 5: Accessing the App in the Browser
+## 🌍 Step 6: Accessing the App in the Browser
 
 Try accessing the app at:
 - `http://localhost:8000`
@@ -293,7 +293,7 @@ You should see the project now.
 
 <br>
 
-## 👤 Step 6: Managing User Permissions and Groups in Django
+## 👤 Step 7: Managing User Permissions and Groups in Django
 
 Django assigns permissions at the **model level**, allowing users to perform **add, change, and delete** operations. You can also create **custom permissions** for advanced access control.
 
@@ -301,9 +301,10 @@ Django assigns permissions at the **model level**, allowing users to perform **a
 
 ### 🔑 Creating Custom Permissions
 
-Modify the **User model** and add permissions:
+Modify the **User model** and add permissions in `/cookie_django_dev_to_prod/cookie_django_dev_to_prod/users/models.py`:
 
 ```python
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -312,6 +313,7 @@ class User(AbstractUser):
         permissions = [
             ("can_post", "Can post articles."),
         ]
+
 ```
 
 Run django makemigrations:
@@ -364,7 +366,7 @@ Running migrations:
 
 ### 🎭 Assigning Permissions to Users
 
-Assign permissions using Django's shell:
+Assign permissions using Django's shell_plus alias:
 
 ```bash
 #!/usr/bin/env bash
@@ -512,6 +514,7 @@ Django's **permission system** ensures fine-grained access control, allowing sec
 
 Managing users securely is critical in a **Cookiecutter-Django** project. By implementing **role-based access control (RBAC)**, we significantly reduce security risks.
 
+Today, we:
 ✅ Configured project aliases for efficiency
 ✅ Learned how to run commands in the container
 ✅ Built Docker containers
