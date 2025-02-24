@@ -2,7 +2,7 @@
 
 <br>
 
-![Colorful Python Logo](https://i.pinimg.com/originals/c2/6a/58/c26a58af112f4cad08629893409f32c5.jpg)
+![Python Zen](https://i.ibb.co/SD0gyY8n/python-zen-background.jpg)
 
 <br>
 
