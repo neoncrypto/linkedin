@@ -14,7 +14,8 @@ SECRET_KEY = env(
     default="elrn14ZdPAlgpf3sAY6mDdoP0XAaQDY7b0Fz2ikkJkcUhsxHfKhG22YOyk3yDuQw",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]  # noqa: S104
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "172.18.0.1"]  # noqa: S104
+
 
 # CACHES
 # ------------------------------------------------------------------------------
@@ -30,7 +31,8 @@ CACHES = {
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend",
+    "DJANGO_EMAIL_BACKEND",
+    default="django.core.mail.backends.console.EmailBackend",
 )
 
 # django-debug-toolbar

@@ -1,4 +1,3 @@
-
 from typing import ClassVar
 
 from django.contrib.auth.models import AbstractUser
@@ -26,6 +25,11 @@ class User(AbstractUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
+
+    class Meta:
+        permissions = [
+            ("can_post", "Can post articles."),
+        ]
 
     objects: ClassVar[UserManager] = UserManager()
 

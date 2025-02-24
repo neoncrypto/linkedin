@@ -257,6 +257,7 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 
+
 REDIS_URL = env("REDIS_URL", default="redis://redis:6379/0")
 REDIS_SSL = REDIS_URL.startswith("rediss://")
 
@@ -320,7 +321,9 @@ ACCOUNT_FORMS = {"signup": "cookie_django_dev_to_prod.users.forms.UserSignupForm
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
 SOCIALACCOUNT_ADAPTER = "cookie_django_dev_to_prod.users.adapters.SocialAccountAdapter"
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_FORMS = {"signup": "cookie_django_dev_to_prod.users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {
+    "signup": "cookie_django_dev_to_prod.users.forms.UserSocialSignupForm",
+}
 # django-compressor
 # ------------------------------------------------------------------------------
 # https://django-compressor.readthedocs.io/en/latest/quickstart/#installation
