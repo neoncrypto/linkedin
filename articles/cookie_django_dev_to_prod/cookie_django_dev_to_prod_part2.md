@@ -24,13 +24,16 @@ To simplify running and shutting down the project, migrations, admin commands, e
 alias djcreatesu='docker-compose -f docker-compose.local.yml run --rm django python manage.py createsuperuser'
 alias djmakemigrations='docker-compose -f docker-compose.local.yml run --rm django python manage.py makemigrations'
 alias djmigrate='docker-compose -f docker-compose.local.yml run --rm django python manage.py migrate'
-alias djshellplus='docker compose -f docker-compose.local.yml run --rm django python manage.py shell_plus'
+alias djshellplus='docker-compose -f docker-compose.local.yml run --rm django python manage.py shell_plus'
 
-alias djbuild='docker compose -f docker-compose.local.yml build'
-alias djlogs='docker compose -f docker-compose.local.yml logs -f --timestamps'
-alias djup='docker compose -f docker-compose.local.yml up -d --build && docker compose -f docker-compose.local.yml logs -f --timestamps'
-alias djdown='docker compose -f docker-compose.local.yml down'
-
+alias djbuild='docker-compose -f docker-compose.local.yml build'
+alias djlogs='docker-compose -f docker-compose.local.yml logs -f --timestamps'
+alias djup='docker-compose -f docker-compose.local.yml up -d --build && 
+docker-compose -f docker-compose.local.yml logs -f --timestamps'
+alias djrestart='docker-compose -f docker-compose.local.yml down && 
+docker-compose -f docker-compose.local.yml up -d --build && 
+docker-compose -f docker-compose.local.yml logs -f --timestamps'
+alias djdown='docker-compose -f docker-compose.local.yml down'
 ```
 
 **Django alias's**:
@@ -147,7 +150,7 @@ git init
 
 ```txt
 
-Initialized empty Git repository in /cookie_django_dev_to_prod/cookie_django_dev_to_prod/.git/
+Initialized empty Git repository in /.git/
 
 ```
 
@@ -267,7 +270,7 @@ docker network inspect 10e27e367ede  # NETWORK ID
 
 ```
 
-Now open up `/cookie_django_dev_to_prod/config/settings/local.py` and add your project's IP to `ALLOWED_HOSTS`.
+Now open up `config/settings/local.py` and add your project's IP to `ALLOWED_HOSTS`.
 
 ```python
 
@@ -301,7 +304,7 @@ Django assigns permissions at the **model level**, allowing users to perform **a
 
 ### 🔑 Creating Custom Permissions
 
-Modify the **User model** and add permissions in `/cookie_django_dev_to_prod/cookie_django_dev_to_prod/users/models.py`:
+Modify the **User model** and add permissions in `/cookie_django_dev_to_prod/users/models.py`:
 
 ```python
 
@@ -487,6 +490,7 @@ from django.http import HttpResponse
 
 @permission_required("app_name.can_post", raise_exception=True)
 def create_article(request):
+    # ...
     return HttpResponse("Article Posted!")
 
 ```
@@ -498,9 +502,9 @@ For class-based views:
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.generic import TemplateView
 
-class DashboardView(PermissionRequiredMixin, TemplateView):
+class CreateArticleView(PermissionRequiredMixin, TemplateView):
     template_name = "create_article.html"
-    permission_required = "app_name.can_post"
+    permission_required = "articles.can_post"
 
 ```
 
