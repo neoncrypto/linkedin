@@ -152,7 +152,7 @@ git init
 
 ```txt
 
-Initialized empty Git repository in /.git/
+Initialized empty Git repository in .git
 
 ```
 
@@ -306,7 +306,7 @@ Django assigns permissions at the **model level**, allowing users to perform **a
 
 ### 🔑 Creating Custom Permissions
 
-Modify the **User model** and add permissions in `/cookie_django_dev_to_prod/users/models.py`:
+Modify the **User model** and add permissions in `users/models.py`:
 
 ```python
 
@@ -415,13 +415,14 @@ IPython 8.32.0 -- An enhanced Interactive Python. Type '?' for help.
 
 ```
 
-Inside the shell:
+Inside the shell make sure to use get_user_model to, you know, get the User model. This is considered best practice in most cases, read more [here](https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#django.contrib.auth.get_user_model).
 
 ```python
 
 from django.contrib.auth.models import Permission
-from django.contrib.auth import get_user_model
-User = get_user_model()
+# https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#django.contrib.auth.get_user_model
+from django.contrib.auth import get_user_model      # Important
+User = get_user_model()                             # Important
 
 user = User.objects.first()
 permission = Permission.objects.get(codename="can_post")
