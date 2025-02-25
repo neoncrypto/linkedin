@@ -16,7 +16,7 @@ Managing users securely is essential when working with **Cookiecutter-Django**. 
 
 ## ⚡ Step 1: Running Docker commands with Bash Aliases
 
-To simplify running and shutting down the project, migrations, admin commands, etc., add these aliases to your `.bashrc` or wherever you stash your alias's, usually located in `"${HOME}/.bashrc"`:
+To simplify running and shutting down the project, migrations, admin commands, etc., add these aliases to your .bashrc or wherever you stash your alias's, usually located in "${HOME}/.bashrc". (There's much better ways to do this but I'm keeping it spaghetti for this guide ☺️ ) :
 
 ```bash
 # ~/.bashrc
@@ -34,6 +34,7 @@ alias djrestart='docker-compose -f docker-compose.local.yml down &&
 docker-compose -f docker-compose.local.yml up -d --build && 
 docker-compose -f docker-compose.local.yml logs -f --timestamps'
 alias djdown='docker-compose -f docker-compose.local.yml down'
+
 ```
 
 **Django alias's**:
@@ -48,6 +49,7 @@ alias djdown='docker-compose -f docker-compose.local.yml down'
 - **djbuild**: Build the containers.
 - **djlogs**: Monitor the container logs.
 - **djup**: Build the containers, run in detached mode and monitor logs.
+- **djrestart**: Bring down the containers, then bring back up in detached mode and monitor logs.
 - **djdown**: Bring down the containers.
 
 Reload your shell:
@@ -57,7 +59,7 @@ Reload your shell:
 . "${HOME}/.bashrc"
 ```
 
-Now, you can use the alias's instead of typing out the whole command every time 🚀.
+Now, you can use the alias's instead of typing out the whole command every time 🚀. Maybe in a later guide I could cover creating a function for these.
 
 ---
 
@@ -65,7 +67,7 @@ Now, you can use the alias's instead of typing out the whole command every time 
 
 ## 🛠 Step 2: Build the Docker Containers with Docker-Compose
 
-Start with the Cookiecutter-Django project initialized in Part 1 and build the containers locally. Ensure **Docker** and **Docker-Compose** are installed. We will use the alias from above.
+Start with the Cookiecutter-Django project initialized in Part 1 and build the containers locally. Ensure Docker and Docker-Compose are installed. We will use the alias from above. Cookicutter-Django uses a multi-stage build to build the Docker containers. Long story short, they're good in this instance. Read more about Docker Multi-Stage Builds [here](https://docs.docker.com/build/building/multi-stage/).
 
 ```bash
 #!/usr/bin/env bash
@@ -369,7 +371,7 @@ Running migrations:
 
 ### 🎭 Assigning Permissions to Users
 
-Assign permissions using Django's shell_plus alias:
+Assign permissions using the shell_plus alias from earlier, shell_plus is part of `django-extensions` and you can read more about it [here](https://django-extensions.readthedocs.io/en/latest/shell_plus.html).
 
 ```bash
 #!/usr/bin/env bash
