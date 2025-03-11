@@ -70,3 +70,18 @@ INSTALLED_APPS += ["django_extensions"]
 CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
+DEFAULT_FROM_EMAIL = env(
+    "DJANGO_DEFAULT_FROM_EMAIL",
+    default="Cookie Django Dev To Prod <noreply@changeme.com>",
+)
+
+# https://docs.celeryq.dev/en/stable/userguide/periodic-tasks.html
+CELERY_BEAT_SCHEDULE = {
+    "bi_weekly_newsletter": {
+        "task": "cookie_django_dev_to_prod.users.tasks.send_newsletter",
+        "schedule": 30.0,  # Every 30 seconds for testing
+        # "schedule": 14 * 24 * 60 * 60,  # Every two weeks for production
+    },
+}

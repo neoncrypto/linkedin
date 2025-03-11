@@ -522,6 +522,7 @@ Django's **permission system** ensures fine-grained access control, allowing sec
 Managing users securely is critical in a **Cookiecutter-Django** project. By implementing **role-based access control (RBAC)**, we significantly reduce security risks.
 
 Today, we: <br>
+
 ✅ Configured project aliases for efficiency <br>
 ✅ Learned how to run commands in the container <br>
 ✅ Built Docker containers <br>
