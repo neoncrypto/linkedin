@@ -102,6 +102,8 @@ CELERY_WORKER_HIJACK_ROOT_LOGGER = False  # Prevents Celery from interfering wit
 3. **`CELERY_WORKER_HIJACK_ROOT_LOGGER = False`**
    - Keeps Celery logs separate from Django logs, ensuring clean and structured log output.
 
+<br>
+
 By leveraging these settings, Celery remains **secure**, **reliable**, and **efficient** for managing background task execution in production environments.
 
 👉 `config/settings/base.py` <br>
@@ -164,9 +166,9 @@ Flower provides **real-time visibility and control** over Celery's task executio
 <br>
 
 
-## Step 3: Sending Mail in Cookiecutter-Django
+## 📧 Step 3: Sending Mail in Cookiecutter-Django
 
-Let's go over some of the `django` built-in functions designed to simplify sending mail programatically.
+Let's go over some of the `django` built-in functions designed to simplify sending mail programmatically.
 
 ### From Email
 
@@ -194,7 +196,7 @@ DEFAULT_FROM_EMAIL = env(
 
 ```
 
-Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
+💾 Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
 
 Now, open up `.envs/.local/.django`:
 
@@ -214,7 +216,7 @@ DJANGO_DEFAULT_FROM_EMAIL=testing@testing.com
 
 ```
 
-Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
+💾 Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
 
 You can repeat the same process for production or put the setting in `base.py` to make it universally available.
 
@@ -272,14 +274,14 @@ In [1]:
 
 ```
 
-Now that we are inside the interactive Python shell, let's test out `django` `send_mail` and use the `DJANGO_DEFAULT_FROM_EMAIL` while we're at it:
+Now that we are inside the interactive Python shell, let's test out `django` `send_mail` and use `DJANGO_DEFAULT_FROM_EMAIL` while we're at it:
 
 ```python
 #!/usr/bin/evn python
 from django.conf import settings
 from django.core.mail import send_mail
 
-subject = 'Welcome to Our Platform'
+subject = 'Welcome To The Platform'
 message = "Hello and thank you for registering! We're excited to have you."
 sender = settings.DEFAULT_FROM_EMAIL
 to = 'example@example.com'
@@ -292,10 +294,10 @@ send_mail(subject, message, sender, [to])
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Subject: Welcome to Our Platform
+Subject: Welcome To The Platform
 From: testing@testing.com
 To: example@example.com
-Date: Sat, 91 Mar 2025 01:08:20 -0000
+Date: Mon, 05 Nov 1984 04:20:00 -0000
 Message-ID: <174079130024.1.12425156307445650134@6ebec8b9935b>
 
 Hello and thank you for registering! We're excited to have you.
@@ -340,11 +342,11 @@ Add this HTML code:
     <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
         <div style="max-width: 600px; margin: 20px auto; background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
             <div style="background: #0073e6; color: white; text-align: center; padding: 10px 0; font-size: 20px; font-weight: bold;">
-                Welcome to Our Service {{ email }}!
+                Welcome To The Platform {{ email }}!
             </div>
             <div style="padding: 20px; text-align: left; color: #333;">
                 <p>Hello new user,</p>
-                <p>Thank you for signing up for our service {{ email }}. We’re excited to have you on board.</p>
+                <p>Thank you for signing up for the platform {{ email }}. We’re excited to have you on board.</p>
                 <p>Best regards,</p>
                 <p>The Team</p>
             </div>
@@ -354,7 +356,7 @@ Add this HTML code:
 
 ```
 
-Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
+💾 Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
 
 Django's `render_to_string` method replaces all the `{{ email }}` parts with the values that we pass into the function. 
 
@@ -399,7 +401,7 @@ MIME-Version: 1.0
 Subject: Welcome To The Platform
 From: testing@testing.com
 To: example@mail.com
-Date: Fri, 22 Jan 2025 16:36:26 -0000
+Date: Mon, 05 Nov 1984 04:20:00 -0000
 Message-ID: <174171098659.1.12520527101284414399@f0abfe16afe3>
 
 --===============1668254091500648291==
@@ -409,10 +411,10 @@ Content-Transfer-Encoding: 8bit
 
 Welcome Email
     
-Welcome to Our Service example@mail.com!
+Welcome To The Platform example@mail.com!
             
 Hello new user,
-Thank you for signing up for our service example@mail.com. We’re excited to have you on board.
+Thank you for signing up for the platform example@mail.com. We’re excited to have you on board.
 Best regards,
 The Team
 
@@ -431,11 +433,11 @@ Content-Transfer-Encoding: 8bit
     <body style="font-family: Arial, sans-serif;margin: 0;padding: 0;background-color: #f4f4f4;">
         <div style="max-width: 600px;margin: 20px auto;background: #ffffff;padding: 20px;border-radius: 8px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
             <div style="background: #0073e6;color: white;text-align: center;padding: 10px 0;font-size: 20px;font-weight: bold;">
-                Welcome to Our Service example@mail.com!
+                Welcome To The Platform example@mail.com!
             </div>
             <div style="padding: 20px;text-align: left;color: #333;">
                 <p>Hello new user,</p>
-                <p>Thank you for signing up for our service example@mail.com. We’re excited to have you on board.</p>
+                <p>Thank you for signing up for the platform example@mail.com. We’re excited to have you on board.</p>
                 <p>Best regards,</p>
                 <p>The Team</p>
             </div>
@@ -447,7 +449,7 @@ Content-Transfer-Encoding: 8bit
 
 ```
 
-As you can see, we are sending a single email with both plain `text` and `html` versions of the email in one.
+As you can see, we are sending a single email with both a plain text and html versions of the email included in one.
 
 Go ahead and exit the shell:
 
@@ -499,16 +501,16 @@ from django.utils.html import strip_tags
 def send_welcome_email(email):
     to = email
     from_email = settings.DEFAULT_FROM_EMAIL
-    subject = 'Welcome to Our Platform'
+    subject = 'Welcome To The Platform'
     html_message = render_to_string('users/new_user_welcome_email.html', {'email': to })
     plain_message = strip_tags(html_message)
     send_mail(subject, plain_message, from_email, [to], html_message=html_message)
 
 ```
 
-Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
+💾 Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
 
-Now we can call this task automatically using Django signals or programatically any other way we can come up with.
+Now we can call this task automatically using Django signals or programmatically any other way we can come up with.
 
 
 ### Django Signals
@@ -544,7 +546,7 @@ def send_welcome_email_signal(sender, instance, created, **kwargs):
 
 ```
 
-Save (may be different on your setup): `CTRL`+`x` ➡ `y` ➡ `ENTER`
+💾 Save and close the file (CTRL+x ➡ y ➡ ENTER)
 
 Now using the `post_save` signal from Django, every user will receive a welcome email automatically when signing up.
 
@@ -592,7 +594,7 @@ Add the following code:
                 Bi-Weekly Newsletter for {{ email }}!
             </div>
             <div style="padding: 20px;text-align: left;color: #333;">
-                <p>Thank you for signing up for our newsletter {{ email }}!</p>
+                <p>Thank you for signing up for the newsletter {{ email }}!</p>
             </div>
         </div>
     </body>
@@ -600,7 +602,7 @@ Add the following code:
 
 ```
 
-Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
+💾 Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
 
 
 ### Creating the Newsletter Task
@@ -641,9 +643,9 @@ def send_newsletter():
 
 ```
 
-Note: you want functionality that checks for `user.subscribed` or similar before sending emails to every user in production, this is for demonstration.
+Note: you probably want functionality that checks for `user.subscribed` or something similar instead of sending emails to every user in production, this task is really just for demonstration.
 
-Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
+💾 Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
 
 
 ### Configuring Celery Beat
@@ -672,7 +674,7 @@ CELERY_BEAT_SCHEDULE = {
 
 ```
 
-Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
+💾 Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
 
 Restart the containers with the `djrestart` alias from Part 2:
 
@@ -686,7 +688,7 @@ djrestart
 
 ```
 
-You should have a `superuser` created from earlier, if not make sure to run the `djcreatesu` (docker-compose -f docker-compose.local.yml run --rm django python manage.py createsuperuser) alias from Part 2 and create a `User`.
+You should have a `superuser` created from earlier, if not make sure to run the `djcreatesu` alias from Part 2 and create a `User`, (`docker-compose -f docker-compose.local.yml run --rm django python manage.py createsuperuser`):
 
 Now, after a short wait you can view the logs for confirmation that the task works as expected:
 
@@ -700,7 +702,7 @@ MIME-Version: 1.0
 Subject: Bi-Weekly Newsletter
 From: testing@testing.com
 To: ['subscriber@example.com']
-Date: Fri, 22 Jan 2025 16:36:26 -0000
+Date: Mon, 05 Nov 1984 04:20:00 -0000
 Message-ID: <174076777371.36.10152070327388197819@d837171afac8>
 
 --===============7651893232125371423==
@@ -712,7 +714,7 @@ Newsletter Email
             
 Bi-Weekly Newsletter for subscriber@example.com!
 
-Thank you for signing up for our newsletter subscriber@example.com!
+Thank you for signing up for the newsletter subscriber@example.com!
 
 --===============7651893232125371423==
 Content-Type: text/html; charset="utf-8"
@@ -732,7 +734,7 @@ Content-Transfer-Encoding: 7bit
                 Bi-Weekly Newsletter for subscriber@example.com!
             </div>
             <div style="padding: 20px;text-align: left;color: #333;">
-                <p>Thank you for signing up for our newsletter subscriber@example.com!</p>
+                <p>Thank you for signing up for the newsletter subscriber@example.com!</p>
             </div>
         </div>
     </body>
@@ -768,13 +770,13 @@ By implementing these practices, we ensure that our Django project remains **sca
 
 ## ⏭️ Next Up
 
-In Part 4, we will walk through the proper way to set up a new Django app and begin building a real-world example application from scratch.
+In Part 4, we will walk through the proper way to set up a new Cookiecutter-Django app and begin building a real-world example application from scratch.
 
 <br>
 
-**Enjoyed this guide? Like, share, and follow to stay updated and so I know there's interest! 🚀**
+### Enjoyed this guide?
 
-<br>
+**Like**, **share**, and **follow** to stay **updated** and so I know there's interest! 🚀
 
 ---
 
@@ -784,3 +786,6 @@ In Part 4, we will walk through the proper way to set up a new Django app and be
 ## Contact
 
 [![GitHub Logo](https://i.ibb.co/tTg2pMYH/Github-logo-duotone.png)](https://github.com/neoncrypto/linkedin/blob/main/articles/cookie_django_dev_to_prod/cookie_django_dev_to_prod.md) [![LinkedIn Logo](https://i.ibb.co/4RNvKK5N/Linkedin-logo-duotone.png)](https://www.linkedin.com/in/neoncrypto0)
+
+<br>
+<br>
