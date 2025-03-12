@@ -61,7 +61,13 @@
       </ul>
     </li>
     <li><a href="#license">License</a></li>
-    <li><a href="#list-of-articles">List of Articles</a></li>
+    <li>
+      <a href="#list-of-articles">List of Articles</a>
+      <ul>
+        <li><a href="#from-development-to-production-series">From Development to Production Series</a></li>
+        <li><a href="#basics">Basics</a></li>
+      </ul>
+    </li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -82,10 +88,30 @@
 
 <br>
 
-#### Built With
+### Built With
 
 [![Markdown][Markdown]][Markdown-url]
 [![Python][Python]][Python-url]
+[![Django][Django]][Django-url]
+
+<hr>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## List of Articles
+
+### From Development to Production Series
+
+- [Part 1 - Key Features & Benefits](https://www.linkedin.com/posts/neoncrypto0_this-guide-walks-you-through-initializing-activity-7297118588757327872-S9q4)
+- [Part 2 - Docker Build & Users](https://www.linkedin.com/posts/neoncrypto0_this-article-guides-you-through-building-activity-7299648598571442176-oJ7q)
+- [Part 3 - Celery & Email](https://www.linkedin.com/posts/neoncrypto0_this-guide-covers-integrating-asynchronous-activity-7305708936425316352-Xf6f)
+
+### Basics
+
+- [Error And Exception Handling](https://www.linkedin.com/pulse/python-programming-basic-error-exception-handling-brian-elliott-n1htf)
+- [Understanding Basic Data Structures](https://www.linkedin.com/pulse/python-understanding-basic-data-structures-brian-elliott-xcutf)
+- [Python Best Practices](https://www.linkedin.com/pulse/best-practices-programming-python-brian-elliott-j6zdf)
 
 <hr>
 
@@ -127,17 +153,6 @@ for more information.
 
 <br>
 
-## List of Articles
-
-- [From Development To Production: Initializing a Scalable Cookiecutter-Django Project (Part 1 - Key Features & Benefits)](https://www.linkedin.com/pulse/from-development-production-initializing-scalable-project-elliott-ixt7f)
-- [Python Programming - Basic Error And Exception Handling](https://www.linkedin.com/pulse/python-programming-basic-error-exception-handling-brian-elliott-n1htf)
-- [Python Programming - Understanding Basic Data Structures](https://www.linkedin.com/pulse/python-understanding-basic-data-structures-brian-elliott-xcutf)
-- [Back To The Basics - Python Best Practices](https://www.linkedin.com/pulse/best-practices-programming-python-brian-elliott-j6zdf)
-
-<hr>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## Contact
 
@@ -154,3 +169,5 @@ for more information.
 [Powered-by-black-magic]: https://forthebadge.com/images/badges/powered-by-black-magic.png
 [Python]: https://img.shields.io/badge/python-3670A0?logo=python&logoColor=ffdd54
 [Python-url]: https://python.org
+[Django]: https://img.shields.io/badge/django-%23092E20.svg?logo=django&logoColor=white
+[Django-url]: https://www.djangoproject.com
