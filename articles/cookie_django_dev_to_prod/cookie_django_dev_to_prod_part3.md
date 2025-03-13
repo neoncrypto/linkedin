@@ -385,7 +385,7 @@ from_email = settings.DEFAULT_FROM_EMAIL
 subject = 'Welcome To The Platform'
 
 html_message = render_to_string(
-    'users/emails/new_user_welcome_email.html', {'email': user.email }  # the magic
+    'users/emails/new_user_welcome_email.html', {'email': to }  # the magic
 )
 plain_message = strip_tags(html_message)  # plain text version of message.
 
