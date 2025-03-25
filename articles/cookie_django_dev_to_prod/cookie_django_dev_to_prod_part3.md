@@ -1,11 +1,39 @@
 # From Development to Production: Initializing a Scalable Cookiecutter-Django Project (Part 3 - Celery & Email)
 
+<!-- MarkdownTOC -->
+
+- [📧 Introduction](#introduction)
+- [🚀 Step 1: Celery's Security and Performance Settings](#step-1-celerys-security-and-performance-settings)
+    - [Key Security Settings](#key-security-settings)
+    - [Performance & Reliability Settings](#performance-reliability-settings)
+- [🔍 Step 2: Monitoring Celery with Flower](#step-2-monitoring-celery-with-flower)
+    - [Viewing the Flower Dashboard](#viewing-the-flower-dashboard)
+    - [Features of Flower](#features-of-flower)
+- [📧 Step 3: Sending Mail in Cookiecutter-Django](#step-3-sending-mail-in-cookiecutter-django)
+    - [From Email](#from-email)
+    - [Django `send_mail`](#django-send_mail)
+- [📩 Step 4: Create Celery Task for Sending Emails using Django Signals](#step-4-create-celery-task-for-sending-emails-using-django-signals)
+    - [Celery `shared_task`](#celery-shared_task)
+    - [Django Signals](#django-signals)
+- [📅 Step 5: Scheduling a Recurring Newsletter with Celery Beat](#step-5-scheduling-a-recurring-newsletter-with-celery-beat)
+    - [Create HTML Email Template for Newsletters](#create-html-email-template-for-newsletters)
+    - [Creating the Newsletter Task](#creating-the-newsletter-task)
+    - [Configuring Celery Beat](#configuring-celery-beat)
+- [🎯 Conclusion](#conclusion)
+- [⏭️ Next Up](#next-up)
+    - [Enjoyed this guide?](#enjoyed-this-guide)
+- [Contact](#contact)
+
+<!-- /MarkdownTOC -->
+
+
 <br>
 
 ![Django Celery](https://i.ibb.co/zVRgQqG2/docker-django-celery-redis.png)
 
 <br>
 
+<a id="introduction"></a>
 ## 📧 Introduction
 
 Email notifications play a crucial role in modern web applications, ensuring users receive timely updates regarding their accounts, transactions, and other critical system activities. Whether sending **welcome emails**, **password reset instructions**, or **order confirmations**, managing emails efficiently enhances user experience and maintains application reliability.
@@ -17,6 +45,7 @@ In this guide, we will integrate **email notifications** into our **Cookiecutter
 <br>
 
 
+<a id="step-1-celerys-security-and-performance-settings"></a>
 ## 🚀 Step 1: Celery's Security and Performance Settings
 
 Cookiecutter-Django comes with **pre-configured Celery settings**, providing a robust foundation for secure and efficient task execution:
@@ -79,7 +108,8 @@ CELERY_WORKER_HIJACK_ROOT_LOGGER = False  # Prevents Celery from interfering wit
 
 ```
 
-### 🔐 Key Security Settings
+<a id="key-security-settings"></a>
+### Key Security Settings
 
 1. **`CELERY_BROKER_USE_SSL`** & **`CELERY_REDIS_BACKEND_USE_SSL`**
    - Encrypts communication between Celery and Redis, preventing unauthorized access and data interception.
@@ -89,7 +119,8 @@ CELERY_WORKER_HIJACK_ROOT_LOGGER = False  # Prevents Celery from interfering wit
    - Restricts serialization formats to **JSON** to prevent security vulnerabilities associated with Pickle-based deserialization attacks.
    - Ensures that Celery workers process only safe, human-readable data.
 
-### ⚡ Performance & Reliability Settings
+<a id="performance-reliability-settings"></a>
+### Performance & Reliability Settings
 
 1. **`CELERY_TASK_TIME_LIMIT`** & **`CELERY_TASK_SOFT_TIME_LIMIT`**
    - The **soft time limit (60 seconds)** gives tasks a chance to gracefully complete before the **hard limit (5 minutes)** is enforced.
@@ -114,10 +145,12 @@ By leveraging these settings, Celery remains **secure**, **reliable**, and **eff
 <br>
 
 
+<a id="step-2-monitoring-celery-with-flower"></a>
 ## 🔍 Step 2: Monitoring Celery with Flower
 
 Cookiecutter-Django includes **Celery Flower**, a real-time monitoring tool for Celery workers. Flower provides insights into **task execution, worker status, and queue performance** via a web-based dashboard.
 
+<a id="viewing-the-flower-dashboard"></a>
 ### Viewing the Flower Dashboard
 
 Let's bring up the containers using the `dup` alias from Part 2, which should also start `flower`:
@@ -147,6 +180,7 @@ Examples:
 
 ![Flower Dashboard](https://i.ibb.co/jPPcckp1/brave-screenshot-3.png)
 
+<a id="features-of-flower"></a>
 ### Features of Flower
 
 - View active, scheduled, and completed tasks.
@@ -166,10 +200,12 @@ Flower provides **real-time visibility and control** over Celery's task executio
 <br>
 
 
+<a id="step-3-sending-mail-in-cookiecutter-django"></a>
 ## 📧 Step 3: Sending Mail in Cookiecutter-Django
 
 Let's go over some of the `django` built-in functions designed to simplify sending mail programmatically.
 
+<a id="from-email"></a>
 ### From Email
 
 Let's configure the django setting `DEFAULT_FROM_EMAIL`.
@@ -226,6 +262,7 @@ Now, whenever we send an email we can use `settings.DJANGO_DEFAULT_FROM_EMAIL` a
 📄 [DEFAULT_FROM_EMAIL](https://docs.djangoproject.com/en/5.1/ref/settings/#default-from-email)
 
 
+<a id="django-send_mail"></a>
 ### Django `send_mail`
 
 Let's jump into the `ipython` shell using the `djshellplus` alias we created in Part 2:
@@ -470,9 +507,11 @@ exit
 <br>
 
 
+<a id="step-4-create-celery-task-for-sending-emails-using-django-signals"></a>
 ## 📩 Step 4: Create Celery Task for Sending Emails using Django Signals
 
 
+<a id="celery-shared_task"></a>
 ### Celery `shared_task`
 
 Let's create a task that will send a HTML email on every new `User` signup.
@@ -513,6 +552,7 @@ def send_welcome_email(email):
 Now we can call this task automatically using Django signals or programmatically any other way we can come up with.
 
 
+<a id="django-signals"></a>
 ### Django Signals
 
 Django **signals** provide a built-in mechanism to execute code when certain events occur in the system. We will leverage them to send **welcome emails** when a user registers using the `send_welcome_email` task function from above.
@@ -560,10 +600,12 @@ Now using the `post_save` signal from Django, every user will receive a welcome 
 <br>
 
 
+<a id="step-5-scheduling-a-recurring-newsletter-with-celery-beat"></a>
 ## 📅 Step 5: Scheduling a Recurring Newsletter with Celery Beat
 
 Django-Celery-Beat allows you to schedule tasks at specific intervals. In this step, we will create a periodic task that sends a **newsletter** using a pre-defined email template.
 
+<a id="create-html-email-template-for-newsletters"></a>
 ### Create HTML Email Template for Newsletters
 
 Create and open up `cookie_django_dev_to_prod/templates/users/emails/newsletter.html`:
@@ -605,6 +647,7 @@ Add the following code:
 💾 Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
 
 
+<a id="creating-the-newsletter-task"></a>
 ### Creating the Newsletter Task
 
 Open up `cookie_django_dev_to_prod/users/tasks.py`
@@ -648,6 +691,7 @@ Note: you probably want functionality that checks for `user.subscribed` or somet
 💾 Save and close the file (`CTRL`+`x` ➡ `y` ➡ `ENTER`)
 
 
+<a id="configuring-celery-beat"></a>
 ### Configuring Celery Beat
 
 Open up `config/settings/local.py`
@@ -757,6 +801,7 @@ INFO trace 36 139583013825408 Task cookie_django_dev_to_prod.users.tasks.send_ne
 <br>
 
 
+<a id="conclusion"></a>
 ## 🎯 Conclusion
 
 In this guide, we successfully integrated **Django signals** with **Celery tasks** to enable **asynchronous email notifications**. We also explored **Celery Beat** for automating scheduled tasks and introduced **Celery Flower** for real-time monitoring. This setup allows Django applications to handle real-time and scheduled emails efficiently, improving performance and user experience.
@@ -768,12 +813,14 @@ By implementing these practices, we ensure that our Django project remains **sca
 <br>
 
 
+<a id="next-up"></a>
 ## ⏭️ Next Up
 
 In Part 4, we will walk through the proper way to set up a new Cookiecutter-Django app and begin building a real-world example application from scratch.
 
 <br>
 
+<a id="enjoyed-this-guide"></a>
 ### Enjoyed this guide?
 
 **Like**, **share**, and **follow** to stay **updated** and so I know there's interest! 🚀
@@ -783,6 +830,7 @@ In Part 4, we will walk through the proper way to set up a new Cookiecutter-Djan
 <br>
 
 
+<a id="contact"></a>
 ## Contact
 
 [![GitHub Logo](https://i.ibb.co/tTg2pMYH/Github-logo-duotone.png)](https://github.com/neoncrypto/linkedin/blob/main/articles/cookie_django_dev_to_prod/cookie_django_dev_to_prod.md) [![LinkedIn Logo](https://i.ibb.co/4RNvKK5N/Linkedin-logo-duotone.png)](https://www.linkedin.com/in/neoncrypto0)
